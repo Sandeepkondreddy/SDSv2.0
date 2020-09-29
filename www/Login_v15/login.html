@@ -125,7 +125,8 @@
                 $btn.attr('disabled', true);
                 $btn.attr('class', 'btn btn-custom-icon');
                 $("#txtusername").attr('disabled', true);
-                $("#txtpassword").attr('disabled', true);
+				$("#txtpassword").attr('disabled', true);
+				alert("Ajax Call-1 Start");
                 $.ajax({
                     type: "GET",
                     url: "http://apps.kpcl.com/KPCTSDS/api/Account/ValidateUser/" + $("#txtusername").val().trim() + "/" + $("#txtpassword").val(),
@@ -133,13 +134,14 @@
                     contentType: "application/json",
                     success: function(data) {   alert(data);
                         if (data[1] == 'True' || data[1] == 'TRUE') {
-                            $("#hidusrid").val(data[0]);
+							$("#hidusrid").val(data[0]);
+							alert("Ajax Call-2 Start");
                             $.ajax({
-                                type: "GET",
-					url: "http://apps.kpcl.com/KPCTSDS/api/Account/GetUserScreens/" + $("#hidusrid").val(),
-                                data: '{}',
-                                contentType: "application/json",
-                                success: function(result) {   alert(result);
+									type: "GET",
+									url: "http://apps.kpcl.com/KPCTSDS/api/Account/GetUserScreens/" + $("#hidusrid").val(),
+									data: '{}',
+									contentType: "application/json",
+									success: function(result) {   alert(result);
                                     window.location.href = result + '?user=' + btoa($("#hidusrid").val());
                                 }
                             });
@@ -151,7 +153,8 @@
                             $("#txtusername").attr('disabled', false);
                             $("#txtpassword").attr('disabled', false);
                             $("#txtpassword").val("");
-                            $("#txtusername").focus();
+							$("#txtusername").focus();
+							alert("Ajax Call-2 End");
                             alert("Invalid User Name or Password");
                         }
                     },
@@ -163,7 +166,8 @@
                         $("#txtusername").attr('disabled', false);
                         $("#txtpassword").attr('disabled', false);
                         $("#txtpassword").val("");
-                        $("#txtusername").focus();
+						$("#txtusername").focus();
+						alert("Ajax Call-1 End");
                         alert("Invalid User Name or Password");
                     }
                 });
