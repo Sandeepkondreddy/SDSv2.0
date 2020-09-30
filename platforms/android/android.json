@@ -13,10 +13,6 @@
                             "count": 1
                         },
                         {
-                            "xml": "<feature name=\"Device\"><param name=\"android-package\" value=\"org.apache.cordova.device.Device\" /></feature>",
-                            "count": 1
-                        },
-                        {
                             "xml": "<feature name=\"imeiplugin\"><param name=\"android-package\" value=\"com.joandilee.imeiplugin\" /></feature>",
                             "count": 1
                         }
@@ -39,22 +35,12 @@
         "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "io.cordova.hellocordova"
         },
-        "cordova-plugin-device": {
-            "PACKAGE_NAME": "io.cordova.hellocordova"
-        },
         "com.joandilee.imeiplugin": {
             "PACKAGE_NAME": "io.cordova.hellocordova"
         }
     },
     "dependent_plugins": {},
     "modules": [
-        {
-            "file": "plugins/cordova-plugin-device/www/device.js",
-            "id": "cordova-plugin-device.device",
-            "clobbers": [
-                "device"
-            ]
-        },
         {
             "file": "plugins/com.joandilee.imeiplugin/www/imeiplugin.js",
             "id": "com.joandilee.imeiplugin.imeiplugin",
@@ -65,7 +51,6 @@
     ],
     "plugin_metadata": {
         "cordova-plugin-whitelist": "1.2.2",
-        "cordova-plugin-device": "2.0.3",
         "com.joandilee.imeiplugin": "0.1"
     }
 }
