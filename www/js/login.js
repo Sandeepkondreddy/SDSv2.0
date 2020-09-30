@@ -1,4 +1,107 @@
 
+
+var app = {
+    // Application Constructor
+    initialize: function() {
+    
+        var url = "";
+		document.addEventListener("deviceready", onDeviceReady, false);
+		function onDeviceReady() {
+			document.addEventListener("backbutton", onBackKeyDown, false);
+		}
+		function onBackKeyDown() {
+			var state = confirm('Are You Sure you want to Exit.');
+			if (state)
+				navigator.app.exitApp(); // exit the app
+		}
+
+		$(document).ready(function() {
+        $("#txtusername").focus();
+        $("#btnSubmit").click(function() {
+            var $btn = $("#btnSubmit");
+            if ($("#txtusername").val() == "") {
+                alert('Enter User Name.');
+                $("#txtusername").focus();
+                return false;
+            } else if ($("#txtpassword").val() == "") {
+                alert('Enter Password.');
+                $("#txtpassword").focus();
+                return false;
+            } else {
+                $btn.find("i.fa").attr('class', 'fa fa-spinner fa-spin fa-lg');
+                $btn.find("span").text("logging in please wait...");
+                $btn.attr('disabled', true);
+                $btn.attr('class', 'btn btn-custom-icon');
+                $("#txtusername").attr('disabled', true);
+				$("#txtpassword").attr('disabled', true);
+				alert("Ajax Call-1 Start");
+                $.ajax({
+                    type: "GET",
+                    url: "http://apps.kpcl.com/KPCTSDS/api/Account/ValidateUser/" + $("#txtusername").val().trim() + "/" + $("#txtpassword").val(),
+		            data: '{}',
+                    contentType: "application/json",
+                    success: function(data) {   alert("Ajax Call-1 Complete");
+                        if (data[1] == 'True' || data[1] == 'TRUE') {
+							$("#hidusrid").val(data[0]);
+							alert("Ajax Call-2 Start");
+                            $.ajax({
+									type: "GET",
+									url: "http://apps.kpcl.com/KPCTSDS/api/Account/GetUserScreens/" + $("#hidusrid").val(),
+									data: '{}',
+									contentType: "application/json",
+									success: function(result) {   alert("Ajax Call-2 Complete");
+                                    window.location.href = result + '?user=' + btoa($("#hidusrid").val());
+                                }
+                            });
+                        } else {
+                            //$btn.find("i.fa").attr('class', 'fa fa-sign-in fa-lg');
+                            //$btn.find("span").text("Login");
+                            $btn.attr('disabled', false);
+                            //$btn.attr('class', 'btn btn-custom');
+                            $("#txtusername").attr('disabled', false);
+                            $("#txtpassword").attr('disabled', false);
+                            $("#txtpassword").val("");
+							$("#txtusername").focus();
+							alert("Ajax Call-2 Error");
+                            alert("Invalid User Name or Password");
+                        }
+                    },
+                    error: function() {
+                        //$btn.find("i.fa").attr('class', 'fa fa-sign-in fa-lg');
+                        //$btn.find("span").text("Login");
+                        $btn.attr('disabled', false);
+                        //$btn.attr('class', 'btn btn-custom');
+                        $("#txtusername").attr('disabled', false);
+                        $("#txtpassword").attr('disabled', false);
+                        $("#txtpassword").val("");
+						$("#txtusername").focus();
+						alert("Ajax Call-1 Error");
+                        alert("Invalid User Name or Password");
+                    }
+                });
+            }
+        });
+    });
+    },
+};
+
+app.initialize();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 (function ($) {
     "use strict";
 
