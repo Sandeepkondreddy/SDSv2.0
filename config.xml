@@ -7,7 +7,7 @@
     <author email="epms_support@krishnapatnamport.com" href="http://www.krishnapatnamport.com">
         Krishnapatnam Port Company Ltd.
     </author>
-    <content src="Login_v15/login.html" />
+    <content src="nasa/index.html" />
     <icon src="www/img/KPCL.png"/>
     <access origin="*" />
     <allow-intent href="http://*/*" />
