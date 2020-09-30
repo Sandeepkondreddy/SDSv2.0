@@ -5,12 +5,13 @@
         SDS application for KPCT...
     </description>
     <author email="epms_support@krishnapatnamport.com" href="http://www.krishnapatnamport.com">
-        Krishnapatnam Port Company Ltd.
+        Adani - Krishnapatnam Port Company Ltd
     </author>
     <content src="login.html" />
 	<icon src="www/img/KPCL.png"/>
     <plugin name="cordova-plugin-whitelist" spec="1" />
     <plugin name="cordova-plugin-device" source="npm" />
+    <plugin name="imeiplugin" source="npm" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
