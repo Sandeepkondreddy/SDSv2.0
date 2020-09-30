@@ -30,7 +30,7 @@ var app = {
                 return false;
             }
         }
-        $(document).ready(function(){
+        $(document).ready(function(){debugger;
             qs();
             $("#loading").hide();
             $(".box1").click(function(){
