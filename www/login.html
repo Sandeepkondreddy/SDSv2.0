@@ -1,68 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>User Login</title>
-        <meta name="viewport" content="user-scalable=yes, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height" />
-        <link rel="stylesheet" type='text/css' href="bootstrap/css/bootstrap.css">
-        <link rel="stylesheet" type='text/css' href="css/loading.css">
-        <link rel="stylesheet" type='text/css' href="css/login.css">
-        <link rel="stylesheet" type='text/css' href="fontawesome/css/fontawesome.min.css">
-        <link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Ubuntu'>
-        <style type="text/css">
-            body{
-                font-family: Ubuntu;
-                text-align: center;
-                vertical-align: middle;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="container">
-            <div class="row">
-                <div id="container" class="Absolute-Center is-Responsive">
-                    <form id="loginForm" class="form-horizontal">
-                        <div class="form-group text-left">
-                            <label for="txtusername" class="col-lg-3 control-label">User Name</label>
-                            <div class="col-lg-9 input-group">
-                                <input class="inputtext" type="text" id='txtusername' placeholder="Enter User Name"/>
-                                <span class="input-group-addon"><i class="fa fa-user fa-lg" aria-hidden="true"></i></span>
-                            </div>
-                        </div>
-                        <div class="form-group text-left">
-                            <label for="txtpassword" class="col-lg-3 control-label">Password</label>
-                            <div class="col-lg-9 input-group">
-                                <input class="inputtext" type="password" id='txtpassword' placeholder="Enter Password"/>
-                                <span class="input-group-addon"><i class="fa fa-lock fa-lg"></i></span>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-lg-3"></div>
-                            <div class="col-lg-9">
-                                <button type="button" id="btnSubmit" class="btn btn-custom"><i class="fa fa-sign-in fa-lg" aria-hidden="true"></i> <span> Login</span></button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <input type="hidden" id="hidusrid">
-    </body>
-</html>
-<script type="text/javascript" src="js/jquery-3.5.1/jquery-3.5.1.min.js"></script>
-<script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
-<script type="text/javascript" src="cordova.js"></script>
-<script type="text/javascript">
-    var url = "";
-    document.addEventListener("deviceready", onDeviceReady, false);
-    function onDeviceReady() {
-        document.addEventListener("backbutton", onBackKeyDown, false);
-    }
-    function onBackKeyDown() {
-        var state = confirm('Are You Sure you want to Exit.');
-        if (state)
-            navigator.app.exitApp(); // exit the app
-    }
-    $(document).ready(function() {
+<head>
+	<title>Login V15</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/util.css">
+	<link rel="stylesheet" type="text/css" href="css/login.css">
+<!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.5.min.css">
+        <script type="text/javascript" src="js/jquery-1.12.3.js"></script>
+        <script type="text/javascript" src="js/jquery.mobile-1.4.5.js"></script>
+        <script type="text/javascript" src="js/responsiveImg.js"></script>
+<!--===============================================================================================-->
+</head>
+<body>
+	
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<div class="login100-form-title" style="background-image: url(images/bg-01.jpg);">
+					<span class="login100-form-title-1">
+						Sign In
+					</span>
+				</div>
+
+				<form class="login100-form validate-form">
+					<div class="wrap-input100 validate-input m-b-26" data-validate="Username is required">
+						<span class="label-input100">Username</span>
+						<input class="input100" type="text" name="username" id="txtusername" placeholder="Enter username">
+						<span class="focus-input100"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input m-b-18" data-validate = "Password is required">
+						<span class="label-input100">Password</span>
+						<input class="input100" type="password" name="pass" id="txtpassword" placeholder="Enter password">
+						<span class="focus-input100"></span>
+					</div>
+
+					<!-- <div class="flex-sb-m w-full p-b-30">
+						<div class="contact100-form-checkbox">
+							<input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
+							<label class="label-checkbox100" for="ckb1">
+								Remember me
+							</label>
+						</div>
+
+						<div>
+							<a href="#" class="txt1">
+								Forgot Password?
+							</a>
+						</div>
+					</div> -->
+
+					<div class="container-login100-form-btn">
+						<button class="login100-form-btn" id="btnSubmit">
+							Login
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+<!--===============================================================================================-->
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+	<script src="vendor/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/daterangepicker/moment.min.js"></script>
+	<script src="vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+	<script type="text/javascript" src="cordova.js"></script>
+<!--===============================================================================================-->
+	<script src="js/login.js"></script>
+<!--===============================================================================================-->
+	<script type="text/javascript">
+		var url = "";
+		document.addEventListener("deviceready", onDeviceReady, false);
+		function onDeviceReady() {
+			document.addEventListener("backbutton", onBackKeyDown, false);
+		}
+		function onBackKeyDown() {
+			var state = confirm('Are You Sure you want to Exit.');
+			if (state)
+				navigator.app.exitApp(); // exit the app
+		}
+
+		$(document).ready(function() {
         $("#txtusername").focus();
         $("#btnSubmit").click(function() {
             var $btn = $("#btnSubmit");
@@ -80,53 +131,55 @@
                 $btn.attr('disabled', true);
                 $btn.attr('class', 'btn btn-custom-icon');
                 $("#txtusername").attr('disabled', true);
-                $("#txtpassword").attr('disabled', true);
+				$("#txtpassword").attr('disabled', true);
+				alert("Ajax Call-1 Start");
                 $.ajax({
                     type: "GET",
                     url: "http://apps.kpcl.com/KPCTSDS/api/Account/ValidateUser/" + $("#txtusername").val().trim() + "/" + $("#txtpassword").val(),
-		    //url: "http://202.83.27.199/KPCTSDS/api/Account/ValidateUser/" + $("#txtusername").val().trim() + "/" + $("#txtpassword").val(),
-			//url: "http://182.72.244.25/KPCTSDS/api/Account/ValidateUser/" + $("#txtusername").val().trim() + "/" + $("#txtpassword").val(),
-                    data: '{}',
+		            data: '{}',
                     contentType: "application/json",
-                    success: function(data) {
+                    success: function(data) {   alert("Ajax Call-1 Complete");
                         if (data[1] == 'True' || data[1] == 'TRUE') {
-                            $("#hidusrid").val(data[0]);
+							$("#hidusrid").val(data[0]);
+							alert("Ajax Call-2 Start");
                             $.ajax({
-                                type: "GET",
-				url: "http://apps.kpcl.com/KPCTSDS/api/Account/GetUserScreens/" + $("#hidusrid").val(),
-                                //url: "http://202.83.27.199/KPCTSDS/api/Account/GetUserScreens/" + $("#hidusrid").val(),
-				//url: "http://182.72.244.25/KPCTSDS/api/Account/GetUserScreens/" + $("#hidusrid").val(),
-                                data: '{}',
-                                contentType: "application/json",
-                                success: function(result) {
+									type: "GET",
+									url: "http://apps.kpcl.com/KPCTSDS/api/Account/GetUserScreens/" + $("#hidusrid").val(),
+									data: '{}',
+									contentType: "application/json",
+									success: function(result) {   alert("Ajax Call-2 Complete");
                                     window.location.href = result + '?user=' + btoa($("#hidusrid").val());
                                 }
                             });
                         } else {
-                            $btn.find("i.fa").attr('class', 'fa fa-sign-in fa-lg');
-                            $btn.find("span").text("Login");
+                            //$btn.find("i.fa").attr('class', 'fa fa-sign-in fa-lg');
+                            //$btn.find("span").text("Login");
                             $btn.attr('disabled', false);
-                            $btn.attr('class', 'btn btn-custom');
+                            //$btn.attr('class', 'btn btn-custom');
                             $("#txtusername").attr('disabled', false);
                             $("#txtpassword").attr('disabled', false);
                             $("#txtpassword").val("");
-                            $("#txtusername").focus();
+							$("#txtusername").focus();
+							alert("Ajax Call-2 Error");
                             alert("Invalid User Name or Password");
                         }
                     },
                     error: function() {
-                        $btn.find("i.fa").attr('class', 'fa fa-sign-in fa-lg');
-                        $btn.find("span").text("Login");
+                        //$btn.find("i.fa").attr('class', 'fa fa-sign-in fa-lg');
+                        //$btn.find("span").text("Login");
                         $btn.attr('disabled', false);
-                        $btn.attr('class', 'btn btn-custom');
+                        //$btn.attr('class', 'btn btn-custom');
                         $("#txtusername").attr('disabled', false);
                         $("#txtpassword").attr('disabled', false);
                         $("#txtpassword").val("");
-                        $("#txtusername").focus();
+						$("#txtusername").focus();
+						alert("Ajax Call-1 Error");
                         alert("Invalid User Name or Password");
                     }
                 });
             }
         });
     });
-</script>
+	</script>
+</body>
+</html>
