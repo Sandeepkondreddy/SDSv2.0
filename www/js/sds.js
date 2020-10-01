@@ -468,6 +468,7 @@ function Reason()
 
 function GetDeviceStatus()
 {
+    alert($("#hidimei").val() + ","+$("#hiduuid").val());
     var Adddata = {};
     Adddata.IMEI = $("#hidimei").val();
     Adddata.UUID = $("#hiduuid").val();
@@ -489,6 +490,10 @@ function GetDeviceStatus()
             {
                 $("#txtloctype").val("YARD");
             }
+            //else if(result == '3')
+            //{
+           //     $("#txtloctype").val("Pa");
+           // }
         },
         error: function () {
             alert("Error occurred while getting device details.");
