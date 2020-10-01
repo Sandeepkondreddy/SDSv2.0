@@ -28,22 +28,22 @@ var app = {
                 $("#txtpassword").focus();
                 return false;
             } else {
-                $btn.find("i.fa").attr('class', 'fa fa-spinner fa-spin fa-lg');
-                $btn.find("span").text("logging in please wait...");
+                //$btn.find("i.fa").attr('class', 'fa fa-spinner fa-spin fa-lg');
+                //$btn.find("span").text("logging in please wait...");
                 $btn.attr('disabled', true);
-                $btn.attr('class', 'btn btn-custom-icon');
+                //$btn.attr('class', 'btn btn-custom-icon');
                 $("#txtusername").attr('disabled', true);
 				$("#txtpassword").attr('disabled', true);
-				alert("Ajax Call-1 Start");
+                   
                 $.ajax({
                     type: "GET",
                     url: "http://apps.kpcl.com/KPCTSDS/api/Account/ValidateUser/" + $("#txtusername").val().trim() + "/" + $("#txtpassword").val(),
 		            data: '{}',
                     contentType: "application/json",
-                    success: function(data) {   alert("Ajax Call-1 Complete");
+                    success: function(data) {   
                         if (data[1] == 'True' || data[1] == 'TRUE') {
 							$("#hidusrid").val(data[0]);
-							alert("Ajax Call-2 Start");
+							
                             $.ajax({
 									type: "GET",
 									url: "http://apps.kpcl.com/KPCTSDS/api/Account/GetUserScreens/" + $("#hidusrid").val(),
@@ -61,9 +61,8 @@ var app = {
                             $("#txtusername").attr('disabled', false);
                             $("#txtpassword").attr('disabled', false);
                             $("#txtpassword").val("");
-							$("#txtusername").focus();
-							alert("Ajax Call-2 Error");
-                            alert("Invalid User Name or Password");
+							$("#txtusername").focus();							
+                            alert("Invalid User Name or Password.");
                         }
                     },
                     error: function() {
@@ -74,9 +73,8 @@ var app = {
                         $("#txtusername").attr('disabled', false);
                         $("#txtpassword").attr('disabled', false);
                         $("#txtpassword").val("");
-						$("#txtusername").focus();
-						alert("Ajax Call-1 Error");
-                        alert("Invalid User Name or Password");
+						$("#txtusername").focus();						
+                        alert("Server Connection unavailabl, Please Check It.");
                     }
                 });
             }
