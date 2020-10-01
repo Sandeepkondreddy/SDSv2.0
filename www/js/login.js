@@ -34,7 +34,7 @@ var app = {
                 //$btn.attr('class', 'btn btn-custom-icon');
                 $("#txtusername").attr('disabled', true);
 				$("#txtpassword").attr('disabled', true);
-                   
+                alert("Ajax Call-1");
                 $.ajax({
                     type: "GET",
                     url: "http://apps.kpcl.com/KPCTSDS/api/Account/ValidateUser/" + $("#txtusername").val().trim() + "/" + $("#txtpassword").val(),
@@ -49,7 +49,7 @@ var app = {
 									url: "http://apps.kpcl.com/KPCTSDS/api/Account/GetUserScreens/" + $("#hidusrid").val(),
 									data: '{}',
 									contentType: "application/json",
-									success: function(result) {   alert("Ajax Call-2 Complete");
+									success: function(result) {   
                                     window.location.href = result + '?user=' + btoa($("#hidusrid").val());
                                 }
                             });
@@ -74,7 +74,7 @@ var app = {
                         $("#txtpassword").attr('disabled', false);
                         $("#txtpassword").val("");
 						$("#txtusername").focus();						
-                        alert("Server Connection unavailabl, Please Check It.");
+                        alert("Server Connection Unavailable, Please Check It.");
                     }
                 });
             }
