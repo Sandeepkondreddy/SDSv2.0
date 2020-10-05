@@ -7,14 +7,19 @@ var app = {
         var url = "";
 		document.addEventListener("deviceready", onDeviceReady, false);
 		function onDeviceReady() {
-			document.addEventListener("backbutton", onBackKeyDown, false);
+            document.addEventListener("backbutton", onBackKeyDown, false);
+            $("#hiduuid").val(device.uuid);
+            window.plugins.imeiplugin.getImei(callback);
+            alert($("#hidimei").val() + ","+$("#hiduuid").val());
 		}
 		function onBackKeyDown() {
 			var state = confirm('Are You Sure you want to Exit.');
 			if (state)
 				navigator.app.exitApp(); // exit the app
 		}
-
+        function callback(imei) {
+            $("#hidimei").val(imei);
+        }
 		$(document).ready(function() {
         $("#txtusername").focus();
         $("#btnSubmit").click(function() {
