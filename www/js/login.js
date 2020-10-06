@@ -9,7 +9,8 @@ var app = {
 		function onDeviceReady() {
             document.addEventListener("backbutton", onBackKeyDown, false);
             $("#hiduuid").val(device.uuid);
-            window.plugins.imeiplugin.getImei(callback);            
+            window.plugins.imeiplugin.getImei(callback);       
+            alert($("#hidimei").val() + ","+$("#hiduuid").val());     
 		}
 		function onBackKeyDown() {
 			var state = confirm('Are You Sure you want to Exit.');
@@ -21,7 +22,7 @@ var app = {
         }
 		$(document).ready(function() {
         $("#txtusername").focus();
-        $("#btnSubmit").click(function() {alert($("#hidimei").val() + ","+$("#hiduuid").val());
+        $("#btnSubmit").click(function() {
             var $btn = $("#btnSubmit");
             if ($("#txtusername").val() == "") {
                 alert('Enter User Name.');
