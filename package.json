@@ -1,0 +1,19 @@
+{
+  "dependencies": {},
+  "devDependencies": {
+    "cordova-browser": "^6.0.0",
+    "cordova-plugin-whitelist": "1",
+    "imeiplugin": "^1.0.1"
+  },
+  "cordova": {
+    "plugins": {
+      "cordova-plugin-whitelist": {},
+      "cordova-plugin-device": {},
+      "imeiplugin": {},
+      "com.joandilee.imeiplugin": {}
+    },
+    "platforms": [
+      "browser"
+    ]
+  }
+}

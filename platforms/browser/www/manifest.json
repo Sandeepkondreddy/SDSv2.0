@@ -1,0 +1,17 @@
+{
+  "background_color": "#FFF",
+  "display": "standalone",
+  "name": "SDS Operations v2.0",
+  "short_name": "SDS Operations v2.0",
+  "version": "com.AKPCL.SDSv2",
+  "description": "SDS application for KPCT...",
+  "author": "Adani - Krishnapatnam Port Company Ltd",
+  "icons": [
+    {
+      "src": "www/img/KPCL.png",
+      "type": "image/png",
+      "sizes": "undefinedxundefined"
+    }
+  ],
+  "start_url": "login.html"
+}

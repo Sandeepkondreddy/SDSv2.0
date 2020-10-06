@@ -18,7 +18,7 @@
   "com.joandilee.imeiplugin": {
     "source": {
       "type": "registry",
-      "id": "imeiplugin"
+      "id": "imeiplugin@^1.0.1"
     },
     "is_top_level": true,
     "variables": {}
