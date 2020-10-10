@@ -11,8 +11,6 @@ var app = {
                     $("#txtuuid").val(device.uuid);
                     $("#hiduuid").val(device.uuid);
                     window.plugins.imeiplugin.getImei(callback);
-                    if($("#txtimei").val()== "")$("#txtimei").val(device.uuid);
-                    if($('#hidimei').val() == "")$("#hidimei").val($("#hiduuid").val());
                 }
                 function callback(imei) {
                     $("#txtimei").val(imei);
@@ -40,6 +38,9 @@ var app = {
                     }
                 }
                 $(document).ready(function () {
+                    
+                    if($("#txtimei").val() == "")$("#txtimei").val(device.uuid);
+                    if($('#hidimei').val() == "")$("#hidimei").val($("#hiduuid").val());
                     $("#loading").hide();
                     qs();
                     //GetDeviceStatus();
