@@ -90,23 +90,17 @@ var app = {
     },
     onDeviceReady: function(){
         console.log('deviceready');
-        var p= document.querySelector('#device p');
-        p.innerHTML = device.cordova +'<br/>'+
-                device.platform +'<br/>'+
-                device.name +'<br/>'+
-                device.uuid +'<br/>'+
-                device.version +'<br/>'+
-                device.manufacturer +'<br/>'+
-                device.isVirtual +'<br/>'+
-                device.serial +'<br/>';
+        //var p= document.querySelector('#device p');
+        //p.innerHTML = device.cordova +'<br/>'+
+        //        device.platform +'<br/>'+
+        //        device.name +'<br/>'+
+        //        device.uuid +'<br/>'+
+        //        device.version +'<br/>'+
+        //        device.manufacturer +'<br/>'+
+        //        device.isVirtual +'<br/>'+
+        //        device.serial +'<br/>';
                 $("#hiduuid").val(device.uuid);
-
-                window.plugins.imeiGetter.get(function(imei){
-                    console.log(imei);$("#hidimei").val(imei);
-                    p.innerHTML =imei;
-                 }, function(){
-                    console.error("Oh... :(");
-                 });
+                if($("#txtimei").val()== "")$("#txtimei").val(device.uuid);
     }
 };
 
