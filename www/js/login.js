@@ -27,7 +27,7 @@ var app = {
         $("#btnSubmit").click(function() {
             var imeidtls = $('#hidimei').val();
             if($('#hidimei').val() == "")$("#hidimei").val($("#hiduuid").val());
-            var $btn = $("#btnSubmit");alert($("#hidimei").val() + ","+$("#hiduuid").val()); 
+            var $btn = $("#btnSubmit");//alert($("#hidimei").val() + ","+$("#hiduuid").val()); 
             if ($("#txtusername").val() == "") {
                 alert('Enter User Name.');
                 $("#txtusername").focus();
