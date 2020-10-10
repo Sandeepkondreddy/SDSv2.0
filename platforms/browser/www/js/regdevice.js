@@ -10,6 +10,7 @@ var app = {
                     document.addEventListener("backbutton", onBackKeyDown, false);
                     $("#txtuuid").val(device.uuid);
                     window.plugins.imeiplugin.getImei(callback);
+                    if($("#txtimei").val()== null)$("#txtimei").val(device.uuid);
                 }
                 function callback(imei) {
                     $("#txtimei").val(imei);

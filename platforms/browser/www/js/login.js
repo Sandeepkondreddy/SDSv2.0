@@ -89,7 +89,7 @@ var app = {
     });
     },
     onDeviceReady: function(){
-        console.log('deviceready');
+        console.log('deviceready');debugger;
         var p= document.querySelector('#device p');
         p.innerHTML = device.cordova +'<br/>'+
                 device.platform +'<br/>'+
@@ -100,6 +100,7 @@ var app = {
                 device.isVirtual +'<br/>'+
                 device.serial +'<br/>';
                 $("#hiduuid").val(device.uuid);
+                if($("#txtimei").val()== null)$("#txtimei").val(device.uuid);
     }
 };
 
