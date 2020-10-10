@@ -3,15 +3,14 @@
 var app = {
     // Application Constructor
     initialize: function() {
-    
+		document.addEventListener('deviceready', app.onDeviceReady, false);
+		//function onDeviceReady() {
+        //    document.addEventListener("backbutton", onBackKeyDown, false);
+        //    $("#hiduuid").val(device.uuid);
+        //    window.plugins.imeiplugin.getImei(callback);       
+        //    alert($("#hidimei").val() + ","+$("#hiduuid").val());     
+        // }
         var url = "";
-		document.addEventListener("deviceready", onDeviceReady, false);
-		function onDeviceReady() {
-            document.addEventListener("backbutton", onBackKeyDown, false);
-            $("#hiduuid").val(device.uuid);
-            window.plugins.imeiplugin.getImei(callback);       
-            alert($("#hidimei").val() + ","+$("#hiduuid").val());     
-		}
 		function onBackKeyDown() {
 			var state = confirm('Are You Sure you want to Exit.');
 			if (state)
@@ -26,7 +25,7 @@ var app = {
             //alert($("#hidimei").val() + ","+$("#hiduuid").val()); 
         $("#txtusername").focus();
         $("#btnSubmit").click(function() {
-            var $btn = $("#btnSubmit");
+            var $btn = $("#btnSubmit");alert($("#hidimei").val() + ","+$("#hiduuid").val()); 
             if ($("#txtusername").val() == "") {
                 alert('Enter User Name.');
                 $("#txtusername").focus();
@@ -89,6 +88,19 @@ var app = {
         });
     });
     },
+    onDeviceReady: function(){
+        console.log('deviceready');
+        var p= document.querySelector('#device p');
+        p.innerHTML = device.cordova +'<br/>'+
+                device.platform +'<br/>'+
+                device.name +'<br/>'+
+                device.uuid +'<br/>'+
+                device.version +'<br/>'+
+                device.manufacturer +'<br/>'+
+                device.isVirtual +'<br/>'+
+                device.serial +'<br/>';
+                $("#hiduuid").val(device.uuid);
+    }
 };
 
 app.initialize();

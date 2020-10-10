@@ -11,6 +11,9 @@
     <feature name="Device">
         <param name="android-package" value="org.apache.cordova.device.Device" />
     </feature>
+    <feature name="IMEIGetter">
+        <param name="android-package" value="tomloprod.IMEIGetter" />
+    </feature>
     <allow-intent href="market:*" />
     <name>SDS Operations v2.0</name>
     <description>

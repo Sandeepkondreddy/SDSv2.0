@@ -2,6 +2,7 @@
   "dependencies": {},
   "devDependencies": {
     "cordova-browser": "^6.0.0",
+    "cordova-plugin-imeigetter": "git+https://github.com/tomloprod/cordova-plugin-imeigetter.git",
     "cordova-plugin-whitelist": "1",
     "imeiplugin": "^1.0.1"
   },
@@ -10,7 +11,8 @@
       "cordova-plugin-whitelist": {},
       "cordova-plugin-device": {},
       "imeiplugin": {},
-      "com.joandilee.imeiplugin": {}
+      "com.joandilee.imeiplugin": {},
+      "cordova-plugin-imeigetter": {}
     },
     "platforms": [
       "browser"

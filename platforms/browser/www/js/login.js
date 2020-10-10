@@ -25,7 +25,7 @@ var app = {
             //alert($("#hidimei").val() + ","+$("#hiduuid").val()); 
         $("#txtusername").focus();
         $("#btnSubmit").click(function() {
-            var $btn = $("#btnSubmit");
+            var $btn = $("#btnSubmit");alert($("#hidimei").val() + ","+$("#hiduuid").val()); 
             if ($("#txtusername").val() == "") {
                 alert('Enter User Name.');
                 $("#txtusername").focus();
@@ -93,12 +93,13 @@ var app = {
         var p= document.querySelector('#device p');
         p.innerHTML = device.cordova +'<br/>'+
                 device.platform +'<br/>'+
-                device.modal +'<br/>'+
+                device.name +'<br/>'+
                 device.uuid +'<br/>'+
                 device.version +'<br/>'+
                 device.manufacturer +'<br/>'+
                 device.isVirtual +'<br/>'+
                 device.serial +'<br/>';
+                $("#hiduuid").val(device.uuid);
     }
 };
 

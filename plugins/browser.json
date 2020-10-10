@@ -15,6 +15,9 @@
     },
     "cordova-plugin-whitelist": {
       "PACKAGE_NAME": "com.AKPCL.SDSv2"
+    },
+    "cordova-plugin-imeigetter": {
+      "PACKAGE_NAME": "com.AKPCL.SDSv2"
     }
   },
   "dependent_plugins": {}

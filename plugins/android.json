@@ -15,6 +15,9 @@
     },
     "cordova-plugin-device": {
       "PACKAGE_NAME": "io.cordova.hellocordova"
+    },
+    "cordova-plugin-imeigetter": {
+      "PACKAGE_NAME": "com.AKPCL.SDSv2"
     }
   },
   "dependent_plugins": {}

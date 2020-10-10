@@ -22,5 +22,13 @@
     },
     "is_top_level": true,
     "variables": {}
+  },
+  "cordova-plugin-imeigetter": {
+    "source": {
+      "type": "registry",
+      "id": "https://github.com/tomloprod/cordova-plugin-imeigetter.git"
+    },
+    "is_top_level": true,
+    "variables": {}
   }
 }

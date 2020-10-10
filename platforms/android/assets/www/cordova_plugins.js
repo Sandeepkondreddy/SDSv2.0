@@ -13,6 +13,13 @@ module.exports = [
         "clobbers": [
             "device"
         ]
+    },
+    {
+        "file": "plugins/cordova-plugin-imeigetter/www/IMEIGetter.js",
+        "id": "cordova-plugin-imeigetter.IMEIGetter",
+        "clobbers": [
+            "cordova.plugins.IMEIGetter"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -20,7 +27,8 @@ module.exports.metadata =
 {
     "cordova-plugin-whitelist": "1.2.2",
     "com.joandilee.imeiplugin": "0.1",
-    "cordova-plugin-device": "2.0.3"
+    "cordova-plugin-device": "2.0.3",
+    "cordova-plugin-imeigetter": "1.0"
 };
 // BOTTOM OF METADATA
 });

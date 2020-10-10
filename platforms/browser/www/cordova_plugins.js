@@ -21,6 +21,14 @@ module.exports = [
         "id": "cordova-plugin-device.DeviceProxy",
         "pluginId": "cordova-plugin-device",
         "runs": true
+    },
+    {
+        "file": "plugins/cordova-plugin-imeigetter/www/IMEIGetter.js",
+        "id": "cordova-plugin-imeigetter.IMEIGetter",
+        "pluginId": "cordova-plugin-imeigetter",
+        "clobbers": [
+            "cordova.plugins.IMEIGetter"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -28,7 +36,8 @@ module.exports.metadata =
 {
     "com.joandilee.imeiplugin": "0.1",
     "cordova-plugin-device": "2.0.3",
-    "cordova-plugin-whitelist": "1.2.2"
+    "cordova-plugin-whitelist": "1.2.2",
+    "cordova-plugin-imeigetter": "1.0"
 }
 // BOTTOM OF METADATA
 });
