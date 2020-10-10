@@ -25,6 +25,8 @@ var app = {
             //alert($("#hidimei").val() + ","+$("#hiduuid").val()); 
         $("#txtusername").focus();
         $("#btnSubmit").click(function() {
+            var imeidtls = $('#hidimei').val();
+            if($('#hidimei').val() == "")$("#hidimei").val($("#hiduuid").val());
             var $btn = $("#btnSubmit");alert($("#hidimei").val() + ","+$("#hiduuid").val()); 
             if ($("#txtusername").val() == "") {
                 alert('Enter User Name.');
@@ -88,19 +90,18 @@ var app = {
         });
     });
     },
-    onDeviceReady: function(){
-        console.log('deviceready');debugger;
-        var p= document.querySelector('#device p');
-        p.innerHTML = device.cordova +'<br/>'+
-                device.platform +'<br/>'+
-                device.name +'<br/>'+
-                device.uuid +'<br/>'+
-                device.version +'<br/>'+
-                device.manufacturer +'<br/>'+
-                device.isVirtual +'<br/>'+
-                device.serial +'<br/>';
+    onDeviceReady: function(){debugger;
+        console.log('deviceready');   
+       // var p= document.querySelector('#device p');
+       // p.innerHTML = device.cordova +'<br/>'+
+       //         device.platform +'<br/>'+
+       //         device.name +'<br/>'+
+       //         device.uuid +'<br/>'+
+       //         device.version +'<br/>'+
+       //         device.manufacturer +'<br/>'+
+       //         device.isVirtual +'<br/>'+
+       //         device.serial +'<br/>';
                 $("#hiduuid").val(device.uuid);
-                if($("#txtimei").val()== null)$("#txtimei").val(device.uuid);
     }
 };
 
