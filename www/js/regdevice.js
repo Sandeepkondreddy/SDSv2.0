@@ -15,7 +15,7 @@ var app = {
                 //    if($('#hidimei').val() == "")$("#hidimei").val($("#hiduuid").val());
                 //}
                 function callback(imei) {
-                    $("#txtimei").val(imei);alert('IMEI:'+imei+'');
+                    $("#txtimei").val(imei);
                 }
                 function onBackKeyDown() {
                 }
@@ -40,7 +40,9 @@ var app = {
                     }
                 }
                 $(document).ready(function () {
-                    
+                    window.plugins.imeiplugin.getImei(callback); 
+                 if($("#txtimei").val() == "")$("#txtimei").val(device.uuid);
+                if($('#hidimei').val() == "")$("#hidimei").val(device.uuid);
                     $("#loading").hide();
                     qs();
                     //GetDeviceStatus();
@@ -163,9 +165,7 @@ var app = {
        //         device.serial +'<br/>';
                 $("#hiduuid").val(device.uuid);
                 $("#txtuuid").val(device.uuid);
-                window.plugins.imeiplugin.getImei(callback); 
-                 if($("#txtimei").val() == "")$("#txtimei").val(device.uuid);
-                if($('#hidimei').val() == "")$("#hidimei").val(device.uuid);
+                
     }
 };
 
