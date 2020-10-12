@@ -4,14 +4,16 @@ var app = {
     initialize: function() {
     
             var qsParm = new Array();
-                document.addEventListener("deviceready", onDeviceReady, false);
+                document.addEventListener("deviceready", app.onDeviceReady, false);
 
-                function onDeviceReady() {
-                    document.addEventListener("backbutton", onBackKeyDown, false);
-                    $("#txtuuid").val(device.uuid);
-                    window.plugins.imeiplugin.getImei(callback);
-                    if($("#txtimei").val()== null)$("#txtimei").val(device.uuid);
-                }
+                //function onDeviceReady() {
+                //    document.addEventListener("backbutton", onBackKeyDown, false);
+                //    $("#txtuuid").val(device.uuid);
+                //    $("#hiduuid").val(device.uuid);
+                //    window.plugins.imeiplugin.getImei(callback);                    
+                //    if($("#txtimei").val() == "")$("#txtimei").val(device.uuid);
+                //    if($('#hidimei').val() == "")$("#hidimei").val($("#hiduuid").val());
+                //}
                 function callback(imei) {
                     $("#txtimei").val(imei);
                 }
@@ -38,6 +40,7 @@ var app = {
                     }
                 }
                 $(document).ready(function () {
+                    
                     $("#loading").hide();
                     qs();
                     //GetDeviceStatus();
@@ -147,6 +150,23 @@ var app = {
                 }
 
     },
+    onDeviceReady: function(){debugger;
+        console.log('deviceready');   
+       // var p= document.querySelector('#device p');
+       // p.innerHTML = device.cordova +'<br/>'+
+       //         device.platform +'<br/>'+
+       //         device.name +'<br/>'+
+       //         device.uuid +'<br/>'+
+       //         device.version +'<br/>'+
+       //         device.manufacturer +'<br/>'+
+       //         device.isVirtual +'<br/>'+
+       //         device.serial +'<br/>';
+                $("#hiduuid").val(device.uuid);
+                $("#txtuuid").val(device.uuid);
+                window.plugins.imeiplugin.getImei(callback); 
+                 if($("#txtimei").val() == "")$("#txtimei").val(device.uuid);
+                if($('#hidimei').val() == "")$("#hidimei").val(device.uuid);
+    }
 };
 
 app.initialize();
