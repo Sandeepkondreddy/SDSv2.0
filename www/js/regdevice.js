@@ -15,7 +15,7 @@ var app = {
                 //    if($('#hidimei').val() == "")$("#hidimei").val($("#hiduuid").val());
                 //}
                 function callback(imei) {
-                    $("#txtimei").val(imei);
+                    $("#txtimei").val(imei);alert('IMEI:'+imei+'');
                 }
                 function onBackKeyDown() {
                 }
