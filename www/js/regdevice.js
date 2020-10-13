@@ -164,8 +164,8 @@ var app = {
                 $("#hiduuid").val(device.uuid);
                 $("#txtuuid").val(device.uuid);
                // window.plugins.imeiplugin.getImei(callback); 
-                if($("#txtimei").val() == "")$("#txtimei").val(device.uuid);
-               if($('#hidimei').val() == "")$("#hidimei").val(device.uuid);
+                if($("#txtimei").val() == "")$("#txtimei").val('0');
+                if($('#hidimei').val() == "")$("#hidimei").val('0');
     }
 };
 
