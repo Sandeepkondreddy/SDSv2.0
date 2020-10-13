@@ -39,8 +39,7 @@ var app = {
                         return false;
                     }
                 }
-                $(document).ready(function () {
-                   
+                $(document).ready(function () {                   
                     $("#loading").hide();
                     qs();
                     //GetDeviceStatus();
@@ -49,7 +48,7 @@ var app = {
                         $.ajax({
                             type: "GET",
                        // url: "http://apps.kpcl.com/KPCTSDS/api/Account/GetUserScreens/" + $("#hidusrid").val(),
-                        url: "http://202.83.27.199/SDSAPI/api/Account/GetUserScreens/" + $("#hidusrid").val(),
+                        url: "http://202.83.27.199/KPCTSDS/api/Account/GetUserScreens/" + $("#hidusrid").val(),
                         //url: "http://182.72.244.25/KPCTSDS/api/Account/GetUserScreens/" + $("#hidusrid").val(),
                             data: '{}',
                             contentType: "application/json",
@@ -59,7 +58,7 @@ var app = {
                         });
                     });
 
-                    $("#btnSubmit").click(function (){
+                    $("#btnSubmit").click(function (){debugger;
                         var _loctype = $("#selLocType option:selected").val();
                         if(_loctype == 0) {
                             $("#selLocType").focus();
@@ -68,7 +67,7 @@ var app = {
                         }
                         else {
                             $(this).find("i.fa").attr('class', 'fa fa-spinner fa-spin');
-                            $(this).find("span").text(" device is registering please wait...");
+                            $(this).find("span").text(" Device is registering please wait...");
                             $(this).attr('disabled', true);
                             $(this).attr('class', 'btn btn-custom-icon');
                             $("#loading").show();
@@ -80,7 +79,7 @@ var app = {
                             $.ajax({
                                 type: 'POST',
                          //       url: 'http://apps.kpcl.com/KPCTSDS/api/Account/RegisterDevice',
-                        url: 'http://202.83.27.199/SDSAPI/api/Account/RegisterDevice',
+                                  url: 'http://202.83.27.199/KPCTSDS/api/Account/RegisterDevice',
                         //url: 'http://182.72.244.25/KPCTSDS/api/Account/RegisterDevice',
                                 dataType: "json",
                                 data: Adddata,
@@ -108,7 +107,7 @@ var app = {
                     $.ajax({
                         type: "POST",
                      //   url: "http://apps.kpcl.com/KPCTSDS/api/Account/GetDeviceStatus",
-                    url: "http://202.83.27.199/SDSAPI/api/Account/GetDeviceStatus",
+                    url: "http://202.83.27.199/KPCTSDS/api/Account/GetDeviceStatus",
                     //url: "http://182.72.244.25/KPCTSDS/api/Account/GetDeviceStatus",
                         dataType: "json",
                         data: Adddata,
@@ -125,7 +124,7 @@ var app = {
                                     type: "GET",
                                     contentType: "application/json; charset=utf-8",
                                    // url: 'http://apps.kpcl.com/KPCTSDS/api/Location/GetLocationType/',
-                            url: 'http://202.83.27.199/SDSAPI/api/Location/GetLocationType/',
+                            url: 'http://202.83.27.199/KPCTSDS/api/Location/GetLocationType/',
                             //url: 'http://182.72.244.25/KPCTSDS/api/Location/GetLocationType/',
                                     dataType: "json",
                                     data: '{}',
@@ -166,6 +165,7 @@ var app = {
                // window.plugins.imeiplugin.getImei(callback); 
                 if($("#txtimei").val() == "")$("#txtimei").val('0');
                 if($('#hidimei').val() == "")$("#hidimei").val('0');
+                
     }
 };
 
