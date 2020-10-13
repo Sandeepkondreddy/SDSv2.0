@@ -107,7 +107,7 @@ $(document).ready(function () {
     $("#txttruckno").focus();
     $("#selLocation").prop('disabled', true);
     qs();
-    GetDeviceStatus();
+    //GetDeviceStatus();
     GetTruckDetails($("#txttruckno").val().trim());
     Reason();
 
@@ -646,7 +646,7 @@ function RemarksValidations()
                // window.plugins.imeiplugin.getImei(callback); 
                 if($('#hidimei').val() == "")$("#hidimei").val('0');
                 document.addEventListener("backbutton", onBackKeyDown, false);
- 
+                GetDeviceStatus();
             nfc.enabled(function(){        
                 lblerr.innerHTML = "Tap nfc tag to read";
                 nfc.addNdefListener(
