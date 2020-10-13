@@ -18,7 +18,14 @@
     },
     "cordova-plugin-imeigetter": {
       "PACKAGE_NAME": "com.AKPCL.SDSv2"
+    },
+    "cordova-plugin-barcodescanner": {
+      "PACKAGE_NAME": "com.AKPCL.SDSv2"
     }
   },
-  "dependent_plugins": {}
+  "dependent_plugins": {
+    "cordova-plugin-compat": {
+      "PACKAGE_NAME": "com.AKPCL.SDSv2"
+    }
+  }
 }

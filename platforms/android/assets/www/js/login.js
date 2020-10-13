@@ -25,7 +25,9 @@ var app = {
             //alert($("#hidimei").val() + ","+$("#hiduuid").val()); 
         $("#txtusername").focus();
         $("#btnSubmit").click(function() {
-            var $btn = $("#btnSubmit");alert($("#hidimei").val() + ","+$("#hiduuid").val()); 
+            var imeidtls = $('#hidimei').val();
+            if($('#hidimei').val() == "")$("#hidimei").val($("#hiduuid").val());
+            var $btn = $("#btnSubmit");//alert($("#hidimei").val() + ","+$("#hiduuid").val()); 
             if ($("#txtusername").val() == "") {
                 alert('Enter User Name.');
                 $("#txtusername").focus();
@@ -41,11 +43,12 @@ var app = {
                 //$btn.attr('class', 'btn btn-custom-icon');
                 $("#txtusername").attr('disabled', true);
 				$("#txtpassword").attr('disabled', true);
-                alert("Ajax Call-1");
+                //alert("Ajax Call-1");
                 $.ajax({
                     type: "GET",
-                    url: "http://apps.kpcl.com/KPCTSDS/api/Account/ValidateUser/" + $("#txtusername").val().trim() + "/" + $("#txtpassword").val(),
-		            data: '{}',
+                    //url: "http://apps.kpcl.com/KPCTSDS/api/Account/ValidateUser/" + $("#txtusername").val().trim() + "/" + $("#txtpassword").val(),
+                    url: "http://202.83.27.199/KPCTSDS/api/Account/ValidateUser/" + $("#txtusername").val().trim() + "/" + $("#txtpassword").val(),
+                    data: '{}',
                     contentType: "application/json",
                     success: function(data) {   
                         if (data[1] == 'True' || data[1] == 'TRUE') {
@@ -53,8 +56,9 @@ var app = {
 							
                             $.ajax({
 									type: "GET",
-									url: "http://apps.kpcl.com/KPCTSDS/api/Account/GetUserScreens/" + $("#hidusrid").val(),
-									data: '{}',
+									//url: "http://apps.kpcl.com/KPCTSDS/api/Account/GetUserScreens/" + $("#hidusrid").val(),
+                                    url: "http://202.83.27.199/KPCTSDS/api/Account/GetUserScreens/" + $("#hidusrid").val(),
+                                    data: '{}',
 									contentType: "application/json",
 									success: function(result) {   
                                     window.location.href = result + '?user=' + btoa($("#hidusrid").val());
@@ -88,17 +92,17 @@ var app = {
         });
     });
     },
-    onDeviceReady: function(){
-        console.log('deviceready');
-        var p= document.querySelector('#device p');
-        p.innerHTML = device.cordova +'<br/>'+
-                device.platform +'<br/>'+
-                device.name +'<br/>'+
-                device.uuid +'<br/>'+
-                device.version +'<br/>'+
-                device.manufacturer +'<br/>'+
-                device.isVirtual +'<br/>'+
-                device.serial +'<br/>';
+    onDeviceReady: function(){debugger;
+        console.log('deviceready');   
+       // var p= document.querySelector('#device p');
+       // p.innerHTML = device.cordova +'<br/>'+
+       //         device.platform +'<br/>'+
+       //         device.name +'<br/>'+
+       //         device.uuid +'<br/>'+
+       //         device.version +'<br/>'+
+       //         device.manufacturer +'<br/>'+
+       //         device.isVirtual +'<br/>'+
+       //         device.serial +'<br/>';
                 $("#hiduuid").val(device.uuid);
     }
 };

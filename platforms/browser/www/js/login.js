@@ -46,8 +46,9 @@ var app = {
                 //alert("Ajax Call-1");
                 $.ajax({
                     type: "GET",
-                    url: "http://apps.kpcl.com/KPCTSDS/api/Account/ValidateUser/" + $("#txtusername").val().trim() + "/" + $("#txtpassword").val(),
-		            data: '{}',
+                    //url: "http://apps.kpcl.com/KPCTSDS/api/Account/ValidateUser/" + $("#txtusername").val().trim() + "/" + $("#txtpassword").val(),
+                    url: "http://202.83.27.199/KPCTSDS/api/Account/ValidateUser/" + $("#txtusername").val().trim() + "/" + $("#txtpassword").val(),
+                    data: '{}',
                     contentType: "application/json",
                     success: function(data) {   
                         if (data[1] == 'True' || data[1] == 'TRUE') {
@@ -55,8 +56,9 @@ var app = {
 							
                             $.ajax({
 									type: "GET",
-									url: "http://apps.kpcl.com/KPCTSDS/api/Account/GetUserScreens/" + $("#hidusrid").val(),
-									data: '{}',
+									//url: "http://apps.kpcl.com/KPCTSDS/api/Account/GetUserScreens/" + $("#hidusrid").val(),
+                                    url: "http://202.83.27.199/KPCTSDS/api/Account/GetUserScreens/" + $("#hidusrid").val(),
+                                    data: '{}',
 									contentType: "application/json",
 									success: function(result) {   
                                     window.location.href = result + '?user=' + btoa($("#hidusrid").val());

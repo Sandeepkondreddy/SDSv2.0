@@ -4,66 +4,63 @@ var app = {
     initialize: function() {
     
         var qsParm = new Array(), oldvalue = "";
-document.addEventListener("deviceready", onDeviceReady, false);
+document.addEventListener("deviceready", app.onDeviceReady, false);
 
-function onDeviceReady() {
-    document.addEventListener("backbutton", onBackKeyDown, false);
-    $("#hiduuid").val(device.uuid);
-    window.plugins.imeiplugin.getImei(callback);
-    nfc.enabled(function(){        
-        lblerr.innerHTML = "Tap nfc tag to read";
-        nfc.addNdefListener(
-            function (record){
-                $("#loading").show();
-                txttruckno.value = "";
-                var tagdata = record.tag.ndefMessage[0]["payload"];
-                var label = document.createTextNode(nfc.bytesToString(tagdata));
-                //txttruckno.value = label.data.substring(3);
-                txttag.value=label.data.substring(3);
-                txttruckno.value="";
-                lblerr.innerHTML = "";
-                txtparty.value = "";
-                txtloc.value = "";
-                txtloctype.value = "";
-                txtactloc.value = "";
-                txtcargo.value = "";
-                txtqty.value = "";
-                txtremarks.value = "";
-                txtstatus.innerHTML = "";
-                hidNewStatus.value = "";
-                hidTruckId.value = "";
-                hidStatusId.value = "";
-                hidfrstflag.value = "";
-                hidprkngflag.value = "";
-                hidscndflag.value = "";
-                hidactlogflag.value = "";
-                hidsdsoutflag.value = "";
-                hidkpctoutflag.value = "";
-                hidfnlflag.value = "";
-                hidloc.value = "";
-                hidloctype.value = "";
-                btnSubmit.style.display = 'none';
-                btnClear.style.display = 'none';
-                //GetTruckDetails(label.data.substring(3));//Added for fetching truck details on NFC read
-                oldvalue = "";
-                GetDeviceStatus();
-                GetTag_TruckDetails(label.data.substring(3));//Added for fetching truck details on NFC read
-                //GetDeviceStatus();
-                Reason();
-                GetUserStages($("#hidusrid").val());
-                $("#loading").hide();
-            },
-            function(){
-                lblerr.innerHTML = "";
-            },
-            function(){
-                lblerr.innerHTML = "Error in reading tag.";
-        });
-    },
-    function(){
-        lblerr.innerHTML = "";
-    });
-}
+//function onDeviceReady() {
+//    document.addEventListener("backbutton", onBackKeyDown, false);
+//    $("#hiduuid").val(device.uuid);
+//    window.plugins.imeiplugin.getImei(callback);
+//    nfc.enabled(function(){        
+//        lblerr.innerHTML = "Tap nfc tag to read";
+//        nfc.addNdefListener(
+//            function (record){
+//                $("#loading").show();
+//                txttruckno.value = "";
+//                var tagdata = record.tag.ndefMessage[0]["payload"];
+//                var label = document.createTextNode(nfc.bytesToString(tagdata));
+//                txttag.value=label.data.substring(3);
+//                txttruckno.value="";
+//                lblerr.innerHTML = "";
+//                txtparty.value = "";
+//                txtloc.value = "";
+//                txtloctype.value = "";
+//                txtactloc.value = "";
+//                txtcargo.value = "";
+//                txtqty.value = "";
+//                txtremarks.value = "";
+//                txtstatus.innerHTML = "";
+//                hidNewStatus.value = "";
+//                hidTruckId.value = "";
+//                hidStatusId.value = "";
+//                hidfrstflag.value = "";
+//                hidprkngflag.value = "";
+//                hidscndflag.value = "";
+//                hidactlogflag.value = "";
+//                hidsdsoutflag.value = "";
+//                hidkpctoutflag.value = "";
+//                hidfnlflag.value = "";
+//                hidloc.value = "";
+//                hidloctype.value = "";
+//                btnSubmit.style.display = 'none';
+//                btnClear.style.display = 'none';                
+//                oldvalue = "";
+//                GetDeviceStatus();
+//               GetTag_TruckDetails(label.data.substring(3));
+//                Reason();
+//                GetUserStages($("#hidusrid").val());
+//                $("#loading").hide();
+//            },
+//            function(){
+//                lblerr.innerHTML = "";
+//            },
+//            function(){
+//                lblerr.innerHTML = "Error in reading tag.";
+//        });
+//    },
+//    function(){
+//        lblerr.innerHTML = "";
+//    });
+//}
 function onBackKeyDown() {
 }
 function callback(imei) {
@@ -110,7 +107,7 @@ $(document).ready(function () {
     $("#txttruckno").focus();
     $("#selLocation").prop('disabled', true);
     qs();
-    GetDeviceStatus();
+    //GetDeviceStatus();
     GetTruckDetails($("#txttruckno").val().trim());
     Reason();
 
@@ -118,8 +115,8 @@ $(document).ready(function () {
         $("#loading").show();
         $.ajax({
             type: "GET",
-            url: "http://apps.kpcl.com/KPCTSDS/api/Account/GetUserScreens/" + $("#hidusrid").val(),
-	    //url: "http://202.83.27.199/KPCTSDS/api/Account/GetUserScreens/" + $("#hidusrid").val(),
+            //url: "http://apps.kpcl.com/KPCTSDS/api/Account/GetUserScreens/" + $("#hidusrid").val(),
+	        url: "http://202.83.27.199/KPCTSDS/api/Account/GetUserScreens/" + $("#hidusrid").val(),
 	    //url: "http://182.72.244.25/KPCTSDS/api/Account/GetUserScreens/" + $("#hidusrid").val(),
             data: '{}',
             contentType: "application/json",
@@ -257,8 +254,8 @@ $(document).ready(function () {
             Adddata.User = $("#hidusrid").val();
             $.ajax({
                 type: 'POST',
-                url: 'http://apps.kpcl.com/KPCTSDS/api/TruckDetails/AddData',
-		//  url: 'http://202.83.27.199/KPCTSDS/api/TruckDetails/AddData',
+                //url: 'http://apps.kpcl.com/KPCTSDS/api/TruckDetails/AddData',
+		          url: 'http://202.83.27.199/KPCTSDS/api/TruckDetails/AddData',
 		//url: 'http://182.72.244.25/KPCTSDS/api/TruckDetails/AddData',
                 dataType: "json",
                 data: Adddata,
@@ -282,8 +279,8 @@ function GetUserStages(userid)
     var obj = $("#hidNewStatus").val(),
         alocid = $("#hidloctype").val();
     $.ajax({
-	    url: 'http://apps.kpcl.com/KPCTSDS/api/Account/GetUserStages/' + userid,
-        //url: 'http://202.83.27.199/KPCTSDS/api/Account/GetUserStages/' + userid,
+	    //url: 'http://apps.kpcl.com/KPCTSDS/api/Account/GetUserStages/' + userid,
+        url: 'http://202.83.27.199/KPCTSDS/api/Account/GetUserStages/' + userid,
 	//url: 'http://182.72.244.25/KPCTSDS/api/Account/GetUserStages/' + userid,
         type: 'GET',
         data: '{}',
@@ -314,8 +311,8 @@ function GetTruckDetails(truckno)
     if(trkno != "")
     {
         $.ajax({
-		url: 'http://apps.kpcl.com/KPCTSDS/api/TruckDetails/GetTruckDetails/' + trkno,
-            //url: 'http://202.83.27.199/KPCTSDS/api/TruckDetails/GetTruckDetails/' + trkno,
+		    //url: 'http://apps.kpcl.com/KPCTSDS/api/TruckDetails/GetTruckDetails/' + trkno,
+            url: 'http://202.83.27.199/KPCTSDS/api/TruckDetails/GetTruckDetails/' + trkno,
 	    //url: 'http://182.72.244.25/KPCTSDS/api/TruckDetails/GetTruckDetails/' + trkno,
             type: 'GET',
             data: '{}',
@@ -381,8 +378,8 @@ function GetTag_TruckDetails(tagno)
     if(TagNo != "")
     {
         $.ajax({
-		url: 'http://apps.kpcl.com/KPCTSDS/api/TruckDetails/GetTagTruckDetails/' + TagNo,
-            //url: 'http://202.83.27.199/KPCTSDS/api/TruckDetails/GetTagTruckDetails/' + TagNo,
+		    //url: 'http://apps.kpcl.com/KPCTSDS/api/TruckDetails/GetTagTruckDetails/' + TagNo,
+            url: 'http://202.83.27.199/KPCTSDS/api/TruckDetails/GetTagTruckDetails/' + TagNo,
 	    //url: 'http://182.72.244.25/KPCTSDS/api/TruckDetails/GetTagTruckDetails/' + TagNo,
             type: 'GET',
             data: '{}',
@@ -449,8 +446,8 @@ function Reason()
     $.ajax({
         type: "GET",
         contentType: "application/json; charset=utf-8",
-	    url: 'http://apps.kpcl.com/KPCTSDS/api/Reason/GetReasons',
-        //url: 'http://202.83.27.199/KPCTSDS/api/Reason/GetReasons',
+	    //url: 'http://apps.kpcl.com/KPCTSDS/api/Reason/GetReasons',
+        url: 'http://202.83.27.199/KPCTSDS/api/Reason/GetReasons',
 	//url: 'http://182.72.244.25/KPCTSDS/api/Reason/GetReasons',
         dataType: "json",
         data: '{}',
@@ -468,14 +465,14 @@ function Reason()
 
 function GetDeviceStatus()
 {
-    alert($("#hidimei").val() + ","+$("#hiduuid").val());
+    
     var Adddata = {};
     Adddata.IMEI = $("#hidimei").val();
     Adddata.UUID = $("#hiduuid").val();
     $.ajax({
         type: "POST",
-	    url: 'http://apps.kpcl.com/KPCTSDS/api/Account/GetDeviceStatus',
-        //url: 'http://202.83.27.199/KPCTSDS/api/Account/GetDeviceStatus',
+	    //url: 'http://apps.kpcl.com/KPCTSDS/api/Account/GetDeviceStatus',
+        url: 'http://202.83.27.199/KPCTSDS/api/Account/GetDeviceStatus',
 	//url: 'http://182.72.244.25/KPCTSDS/api/Account/GetDeviceStatus',
         dataType: "json",
         data: Adddata,
@@ -642,6 +639,68 @@ function RemarksValidations()
 }
        
     },
+    onDeviceReady: function(){
+        console.log('deviceready');   
+                $("#hiduuid").val(device.uuid);                
+               // window.plugins.imeiplugin.getImei(callback); 
+                if($('#hidimei').val() == "")$("#hidimei").val('0');
+                document.addEventListener("backbutton", onBackKeyDown, false);
+                alert($("#hidimei").val() + ","+$("#hiduuid").val());
+                GetDeviceStatus();
+                nfc.enabled(function(){        
+                lblerr.innerHTML = "Tap nfc tag to read";
+                nfc.addNdefListener(
+                    function (record){
+                        $("#loading").show();
+                        txttruckno.value = "";
+                        var tagdata = record.tag.ndefMessage[0]["payload"];
+                        var label = document.createTextNode(nfc.bytesToString(tagdata));
+                        //txttruckno.value = label.data.substring(3);
+                        txttag.value=label.data.substring(3);
+                        txttruckno.value="";
+                        lblerr.innerHTML = "";
+                        txtparty.value = "";
+                        txtloc.value = "";
+                        txtloctype.value = "";
+                        txtactloc.value = "";
+                        txtcargo.value = "";
+                        txtqty.value = "";
+                        txtremarks.value = "";
+                        txtstatus.innerHTML = "";
+                        hidNewStatus.value = "";
+                        hidTruckId.value = "";
+                        hidStatusId.value = "";
+                        hidfrstflag.value = "";
+                        hidprkngflag.value = "";
+                        hidscndflag.value = "";
+                        hidactlogflag.value = "";
+                        hidsdsoutflag.value = "";
+                        hidkpctoutflag.value = "";
+                        hidfnlflag.value = "";
+                        hidloc.value = "";
+                        hidloctype.value = "";
+                        btnSubmit.style.display = 'none';
+                        btnClear.style.display = 'none';
+                        //GetTruckDetails(label.data.substring(3));//Added for fetching truck details on NFC read
+                        oldvalue = "";
+                        GetDeviceStatus();
+                        GetTag_TruckDetails(label.data.substring(3));//Added for fetching truck details on NFC read
+                        //GetDeviceStatus();
+                        Reason();
+                        GetUserStages($("#hidusrid").val());
+                        $("#loading").hide();
+                    },
+                    function(){
+                        lblerr.innerHTML = "";
+                    },
+                    function(){
+                        lblerr.innerHTML = "Error in reading tag.";
+                });
+            },
+            function(){
+                lblerr.innerHTML = "";
+            });
+    }
 };
 
 app.initialize();

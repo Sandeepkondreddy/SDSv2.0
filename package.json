@@ -2,6 +2,8 @@
   "dependencies": {},
   "devDependencies": {
     "cordova-browser": "^6.0.0",
+    "cordova-plugin-barcodescanner": "^0.7.4",
+    "cordova-plugin-compat": "^1.2.0",
     "cordova-plugin-imeigetter": "git+https://github.com/tomloprod/cordova-plugin-imeigetter.git",
     "cordova-plugin-whitelist": "1",
     "imeiplugin": "^1.0.1"
@@ -12,7 +14,8 @@
       "cordova-plugin-device": {},
       "imeiplugin": {},
       "com.joandilee.imeiplugin": {},
-      "cordova-plugin-imeigetter": {}
+      "cordova-plugin-imeigetter": {},
+      "cordova-plugin-barcodescanner": {}
     },
     "platforms": [
       "browser"

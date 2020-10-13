@@ -29,6 +29,14 @@ module.exports = [
         "clobbers": [
             "cordova.plugins.IMEIGetter"
         ]
+    },
+    {
+        "file": "plugins/cordova-plugin-barcodescanner/www/barcodescanner.js",
+        "id": "cordova-plugin-barcodescanner.BarcodeScanner",
+        "pluginId": "cordova-plugin-barcodescanner",
+        "clobbers": [
+            "cordova.plugins.barcodeScanner"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -37,7 +45,9 @@ module.exports.metadata =
     "com.joandilee.imeiplugin": "0.1",
     "cordova-plugin-device": "2.0.3",
     "cordova-plugin-whitelist": "1.2.2",
-    "cordova-plugin-imeigetter": "1.0"
+    "cordova-plugin-imeigetter": "1.0",
+    "cordova-plugin-compat": "1.2.0",
+    "cordova-plugin-barcodescanner": "0.7.4"
 }
 // BOTTOM OF METADATA
 });
