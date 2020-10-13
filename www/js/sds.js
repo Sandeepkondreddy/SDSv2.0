@@ -465,7 +465,7 @@ function Reason()
 
 function GetDeviceStatus()
 {
-    alert($("#hidimei").val() + ","+$("#hiduuid").val());
+    
     var Adddata = {};
     Adddata.IMEI = $("#hidimei").val();
     Adddata.UUID = $("#hiduuid").val();
@@ -641,13 +641,13 @@ function RemarksValidations()
     },
     onDeviceReady: function(){
         console.log('deviceready');   
-                $("#hiduuid").val(device.uuid);
-                
+                $("#hiduuid").val(device.uuid);                
                // window.plugins.imeiplugin.getImei(callback); 
                 if($('#hidimei').val() == "")$("#hidimei").val('0');
                 document.addEventListener("backbutton", onBackKeyDown, false);
+                alert($("#hidimei").val() + ","+$("#hiduuid").val());
                 GetDeviceStatus();
-            nfc.enabled(function(){        
+                nfc.enabled(function(){        
                 lblerr.innerHTML = "Tap nfc tag to read";
                 nfc.addNdefListener(
                     function (record){
